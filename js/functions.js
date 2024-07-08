@@ -14,10 +14,18 @@ const parseDigits = (sequence) => {
   return digits ? Number(digits) : NaN;
 };
 
-// Функция перевода часов в минуты
+// Функция пересчёта часов в минуты
 const getHoursInMinutes = (time) => {
   const [hours, minutes] = time.split(':');
   return Number(hours) * 60 + Number(minutes);
 };
 
-void (fitsLength, isPalindrome, parseDigits, getHoursInMinutes);
+// Функция проверки, не выходит ли время встречи за пределы рабочего дня
+const meetingDuringBusinessHours = (workingStart, workingEnd, meetingStart, meetingDuration) => {
+  workingStart = getHoursInMinutes(workingStart);
+  workingEnd = getHoursInMinutes(workingEnd);
+  meetingStart = getHoursInMinutes(meetingStart);
+  return workingStart <= meetingStart && workingEnd >= (meetingStart + meetingDuration);
+};
+
+void (fitsLength, isPalindrome, parseDigits, meetingDuringBusinessHours);
