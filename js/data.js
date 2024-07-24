@@ -12,7 +12,7 @@ const createCommentsData = (itemCount) => {
   }));
 };//#4
 
-const createPicturesDate = (itemCount = 25) => {
+const createPicturesData = (itemCount = 25) => {
   const descriptions = ['Фотография – это история, которую я не могу выразить словами','Когда слова станут неясными, я сосредоточусь на фотографиях','Когда изображения станут неадекватными, я буду доволен тишиной', 'Когда у меня в руках камера – я ничего не боюсь', 'Мы делаем фотографии, чтобы понять, что значит для нас наша жизнь'];
 
   return new Array(itemCount).fill(1).map((start, index) => ({
@@ -24,4 +24,4 @@ const createPicturesDate = (itemCount = 25) => {
   }));
 };//#4
 
-export {createPicturesDate};
+export {createPicturesData};

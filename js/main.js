@@ -1,3 +1,4 @@
-import {createPicturesDate} from './data.js';
+import {createPicturesData} from './data.js';
+import {renderThumbnails} from './thumbnails.js';
 
-void(createPicturesDate);
+renderThumbnails(createPicturesData());
