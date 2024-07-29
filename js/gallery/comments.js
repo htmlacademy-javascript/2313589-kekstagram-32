@@ -17,16 +17,16 @@ const createComments = (commentsData) => commentsData.map((properties) => {
 
 const data = [];
 const onLoaderButtonClick = () => {
-  container.append(...createComments(data.splice(0, 5)));
+  container.append(...createComments(data.splice(0, data.step)));
+  shownCounter.textContent = container.childElementCount;
+  loaderButton.classList.toggle('hidden', !data.length);
 };
 
-const renderComments = (commentsData) => {
+const renderComments = (commentsData, step = 5) => {
   data.splice(0, Infinity, ...commentsData);
+  data.step = step;
   container.replaceChildren();
-  shownCounter.textContent = commentsData.length;
   totalCounter.textContent = commentsData.length;
-  loaderButton.classList.add('hidden');
-
   loaderButton.addEventListener('click', onLoaderButtonClick);
   loaderButton.click();
 };
