@@ -10,15 +10,15 @@ const onDocumentKeydown = (evt) => {
 };
 
 function showPopup() {
-  popup.classList.remove('.hidden');
+  popup.classList.remove('hidden');
   popup.scroll(0, 0);
-  document.body.classList.add('.modal-open');
+  document.body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
 }
 
 const hidePopup = () => {
-  popup.classList.add('.hidden');
-  document.body.classList.remove('.modal-open');
+  popup.classList.add('hidden');
+  document.body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
   //document.dispatchEvent(new CustomEvent('popupClose')); //&
 };
