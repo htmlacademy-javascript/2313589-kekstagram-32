@@ -15,11 +15,20 @@ const createComments = (commentsData) => commentsData.map((properties) => {
   return comment;
 });
 
-const renderComments = (commentsData) => {
-  container.replaceChildren(...createComments(commentsData));
-  shownCounter.textContent = commentsData.length;
+const data = [];
+const onLoaderButtonClick = () => {
+  container.append(...createComments(data.splice(0, data.step)));
+  shownCounter.textContent = container.childElementCount;
+  loaderButton.classList.toggle('hidden', !data.length);
+};
+
+const renderComments = (commentsData, step = 5) => {
+  data.splice(0, Infinity, ...commentsData);
+  data.step = step;
+  container.replaceChildren();
   totalCounter.textContent = commentsData.length;
-  loaderButton.classList.add('hidden');
+  loaderButton.addEventListener('click', onLoaderButtonClick);
+  loaderButton.click();
 };
 
 export {renderComments};
