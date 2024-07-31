@@ -1,5 +1,5 @@
 import {showPopup} from './popup';
-import {checkValidity} from './validation.js';
+import {checkValidity, resetValidity} from './validation.js';
 
 const form = document.querySelector('.img-upload__form');
 
@@ -13,4 +13,8 @@ form.addEventListener('submit', (evt) => {
   if (!checkValidity()) {
     evt.preventDefault();
   }
+});
+
+form.addEventListener('reset', () => {
+  resetValidity();
 });
