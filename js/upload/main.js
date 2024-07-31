@@ -1,4 +1,4 @@
-import {showPopup} from './popup';
+import {showPopup} from './popup.js';
 import {checkValidity, resetValidity} from './validation.js';
 
 const form = document.querySelector('.img-upload__form');

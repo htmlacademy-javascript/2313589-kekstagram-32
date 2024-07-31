@@ -7,11 +7,11 @@ const onDocumentKeydown = (evt) => {
   }
 };
 
-function showPopup() {
+const showPopup = () => {
   popup.classList.remove('hidden');
   document.body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
-}
+};
 
 const hidePopup = () => {
   popup.classList.add('hidden');
