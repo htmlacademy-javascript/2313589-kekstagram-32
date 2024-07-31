@@ -29,3 +29,8 @@ pristine.addValidator(form.hashtags, (text) => {
   const maxHashtagLength = 20;
   return split(text).every((word) => word.length) <= maxHashtagLength;
 }, 'Слишком длинный #-тэг', 1, true);
+
+pristine.addValidator(form.description, (text) => {
+  const maxDescriptionLength = 140;
+  return text.length <= maxDescriptionLength;
+}, 'Слишком длинный комментарий', 1, true);
