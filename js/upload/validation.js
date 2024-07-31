@@ -13,9 +13,14 @@ const split = (text) => text.split(' ').filter(Boolean);
 pristine.addValidator(form.hashtags, (text) => {
   const hashtagPattern = /^#[a-zа-яё0-9]+$/i;
   return split(text).every((word) => hashtagPattern.test(word));
-}, 'Невалидный #-тэг');
+}, 'Невалидный #-тэг', 1, true);
 
 pristine.addValidator(form.hashtags, (text) => {
   const words = split(text.toLowerCase());
   return words.length === new Set(words).size; //Set откидывает повторы.
-}, 'Повторяющийся #-тэг');
+}, 'Повторяющийся #-тэг', 1, true);
+
+pristine.addValidator(form.hashtags, (text) => {
+  const maxHashtags = 5;
+  return split(text).length <= maxHashtags;
+}, 'Слишком много #-тэг', 1, true);
