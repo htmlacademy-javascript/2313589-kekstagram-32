@@ -42,10 +42,11 @@ const setEffect = (type) => {
 };
 
 const getEffectValue = () => slider.get();
+const resetEffect = () => setEffect('none');
 
 slider.on('update', () => {
   level.value = slider.get(true);
   level.dispatchEvent(new Event('change', {bubbles: true}));
 });
 
-export {setEffect, getEffectValue};
+export {setEffect, getEffectValue, resetEffect};
