@@ -38,4 +38,11 @@ const setEffect = (type) => {
   slider.updateOptions(createOptions(type));
 };
 
-export {setEffect};
+const getEffectValue = () => slider.get();
+
+slider.on('update', () => {
+  level.value = slider.get(true);
+  level.dispatchEvent(new Event('change', {bubbles: true}));
+});
+
+export {setEffect, getEffectValue};
