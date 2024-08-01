@@ -10,6 +10,15 @@ const ranges = {
   heat: [1, 3, 0.1]
 };
 
+const formatters = {
+  none: () => '',
+  chrome: (value) => `grayscale(${value})`,
+  sepia: (value) => `sepia(${value})`,
+  marvin: (value) => `invert(${value}%)`,
+  phobos: (value) => `blur(${value}px)`,
+  heat: (value) => `brightness(${value})`,
+};
+
 // опции для слайдера
 const createOptions = (type) => {
   const [min, max, step] = ranges[type];
@@ -17,9 +26,10 @@ const createOptions = (type) => {
     range: {min, max},
     step,
     start: max,
+    format: {from: String, to: formatters[type]},
     connect: 'lower'
   };
 };
 
 const placeholder = document.querySelector('.effect-level__slider');
-nouislider.create(placeholder, createOptions('none'));
+noUiSlider.create(placeholder, createOptions('none'));
