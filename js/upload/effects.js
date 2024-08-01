@@ -27,7 +27,8 @@ const createOptions = (type) => {
     step,
     start: max,
     format: {from: String, to: formatters[type]},
-    connect: 'lower'
+    connect: 'lower',
+    behaviour: 'snap smooth-steps'
   };
 };
 
