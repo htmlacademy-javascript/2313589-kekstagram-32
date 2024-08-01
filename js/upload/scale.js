@@ -8,4 +8,10 @@ const setScale = (value) => {
 // текущее значение масштаба
 const getScale = () => Number.parseFloat(display.value);
 
-export {setScale, getScale};
+// уменьшение масштаба
+const scaleDown = () => setScale(getScale() - 25);
+
+// увеличение масштаба
+const scaleUp = () => setScale(getScale() + 25);
+
+export {setScale, getScale, scaleDown, scaleUp};
