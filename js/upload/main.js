@@ -1,12 +1,18 @@
 import {showPopup} from './popup.js';
-import {} from './scale.js';
+import {getScale } from './scale.js';
 import {checkValidity, resetValidity} from './validation.js';
 
 const form = document.querySelector('.img-upload__form');
+const preview = document.querySelector('.img-upload__preview img');
 
 form.addEventListener('change', (evt) => {
-  if (evt.target.name === 'filename') {
-    showPopup();
+  switch (evt.target.name) {
+    case 'filename':
+      showPopup();
+      break;
+    case 'scale':
+      preview.style.transform = `scale(${getScale() / 100})`;
+      break;
   }
 });
 

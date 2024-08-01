@@ -6,6 +6,8 @@ const setScale = (value) => {
   value = Math.max(value, 25);
   value = Math.min(value, 100);
   display.value = `${value}%`;
+  // привязка к изображению
+  display.dispatchEvent(new Event('change', {bubbles: true}));
 };
 
 // текущее значение масштаба
@@ -21,4 +23,4 @@ const scaleUp = () => setScale(getScale() + 25);
 scaleDownButton.addEventListener('click', () => scaleDown());
 scaleUpButton.addEventListener('click', () => scaleUp());
 
-export {setScale, getScale, scaleDown, scaleUp};
+export {getScale};
