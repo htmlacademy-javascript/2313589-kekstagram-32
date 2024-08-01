@@ -2,6 +2,9 @@ const [scaleDownButton, display, scaleUpButton] = document.querySelectorAll('.sc
 
 // установка масштаба
 const setScale = (value) => {
+  // мин и макс диапазон
+  value = Math.max(value, 25);
+  value = Math.min(value, 100);
   display.value = `${value}%`;
 };
 
@@ -14,6 +17,7 @@ const scaleDown = () => setScale(getScale() - 25);
 // увеличение масштаба
 const scaleUp = () => setScale(getScale() + 25);
 
+// кнопки управления масштабом
 scaleDownButton.addEventListener('click', () => scaleDown());
 scaleUpButton.addEventListener('click', () => scaleUp());
 
