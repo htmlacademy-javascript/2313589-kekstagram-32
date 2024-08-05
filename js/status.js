@@ -5,13 +5,14 @@ const renderStatus = (type, options = {}) => {
   const onDocumentKeydown = (evt) => {
     if (evt.key.startsWith('Esc')) {
       status.click();
+      evt.stopPropagation();
     }
   };
 
   const onStatusClick = (evt) => {
     if (evt.target.matches(`.${type}, .${type}__button`)) {
       status.remove();
-      document.removeEventListener('keydown', onDocumentKeydown);
+      document.removeEventListener('keydown', onDocumentKeydown, true);
     }
   };
 
@@ -20,7 +21,7 @@ const renderStatus = (type, options = {}) => {
     window.setTimeout(() => status.remove(), options.autoHide);
   } else {
     status.addEventListener('click', onStatusClick);
-    document.addEventListener('keydown', onDocumentKeydown);
+    document.addEventListener('keydown', onDocumentKeydown, true);
   }
 };
 
