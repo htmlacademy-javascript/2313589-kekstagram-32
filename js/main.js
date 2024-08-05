@@ -4,4 +4,4 @@ import {renderGallery} from './gallery/main.js';
 import './upload/main.js';
 
 renderGallery(createPicturesData());
-renderStatus('success');
+renderStatus('success', {autoHide: 5000});

@@ -1,4 +1,4 @@
-const renderStatus = (type) => {
+const renderStatus = (type, options = {}) => {
   const template = document.querySelector(`#${type}`);
   const status = template.content.querySelector(`.${type}`).cloneNode(true);
 
@@ -8,14 +8,20 @@ const renderStatus = (type) => {
     }
   };
 
-  status.addEventListener('click', (evt) => {
+  const onStatusClick = (evt) => {
     if (evt.target.matches(`.${type}, .${type}__button`)) {
       status.remove();
       document.removeEventListener('keydown', onDocumentKeydown);
     }
-  });
-  document.addEventListener('keydown', onDocumentKeydown);
+  };
+
   document.body.appened(status);
+  if (options.autoHide) {
+    window.setTimeout(() => status.remove(), options.autoHide);
+  } else {
+    status.addEventListener('click', onStatusClick);
+    document.addEventListener('keydown', onDocumentKeydown);
+  }
 };
 
 export {renderStatus};
