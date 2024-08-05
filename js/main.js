@@ -1,7 +1,7 @@
 import {request} from './utilities.js';
 import {renderStatus} from './status.js';
 import {renderGallery} from './gallery/main.js';
-import {setSubmitDisabled} from './upload/main.js';
+import {setSubmitDisabled, ressetForm} from './upload/main.js';
 
 const baseUrl = 'https://32.javascript.htmlacademy.pro/kekstagram';
 //https://32.javascript.htmlacademy.pro/kekstagram/data.
@@ -10,6 +10,7 @@ document.addEventListener('formdata', async (evt) => {
   try {
     setSubmitDisabled(true);
     await request(baseUrl, {method: 'post', body: evt.formData});
+    ressetForm();
     renderStatus('success');
   } catch {
     renderStatus('error');

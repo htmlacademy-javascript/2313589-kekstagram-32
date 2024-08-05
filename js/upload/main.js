@@ -1,4 +1,4 @@
-import {showPopup} from './popup.js';
+import {showPopup, hidePopup} from './popup.js';
 import {getScale, resetScale} from './scale.js';
 import {setEffect, getEffectValue, resetEffect} from './effects.js';
 import {checkValidity, resetValidity} from './validation.js';
@@ -10,6 +10,11 @@ const submitButton = document.querySelector('.img-upload__submit');
 const setSubmitDisabled = (flag) => {
   submitButton.disabled = flag;
   submitButton.textContent = flag ? 'Сохраняю...' : 'Сохранить';
+};
+
+const ressetForm = () => {
+  form.reset();
+  hidePopup();
 };
 
 form.addEventListener('change', (evt) => {
@@ -42,4 +47,4 @@ form.addEventListener('reset', () => {
   resetValidity();
 });
 
-export {setSubmitDisabled};
+export {setSubmitDisabled, ressetForm};
