@@ -7,6 +7,11 @@ const form = document.querySelector('.img-upload__form');
 const preview = document.querySelector('.img-upload__preview img');
 const submitButton = document.querySelector('.img-upload__submit');
 
+const renderFile = (file) => {
+  preview.src = URL.createObjectURL(file);
+  showPopup();
+};
+
 const setSubmitDisabled = (flag) => {
   submitButton.disabled = flag;
   submitButton.textContent = flag ? 'Сохраняю...' : 'Сохранить';
@@ -20,7 +25,7 @@ const ressetForm = () => {
 form.addEventListener('change', (evt) => {
   switch (evt.target.name) {
     case 'filename':
-      showPopup();
+      renderFile(...evt.target.files);
       break;
     case 'scale':
       preview.style.transform = `scale(${getScale() / 100})`;
