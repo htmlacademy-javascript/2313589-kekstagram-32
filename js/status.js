@@ -16,7 +16,7 @@ const renderStatus = (type, options = {}) => {
     }
   };
 
-  document.body.appened(status);
+  document.body.append(status);
   if (options.autoHide) {
     window.setTimeout(() => status.remove(), options.autoHide);
   } else {
