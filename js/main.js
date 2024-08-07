@@ -1,4 +1,4 @@
-import {request} from './utilities.js';
+import {request, throttle} from './utilities.js';
 import {renderStatus} from './status.js';
 import {renderGallery} from './gallery/main.js';
 import {setSubmitDisabled, ressetForm} from './upload/main.js';
@@ -20,7 +20,7 @@ document.addEventListener('formdata', async (evt) => {
 });
 
 try {
-  renderGallery(await request(`${baseUrl}/data`));
+  renderGallery(await request(`${baseUrl}/data`), throttle);
 } catch {
   renderStatus('data-error', {autoHide: 5000});
 }
