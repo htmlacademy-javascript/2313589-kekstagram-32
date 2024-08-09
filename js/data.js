@@ -10,7 +10,7 @@ const createCommentsData = (itemCount) => {
     message: getRandomItem(messages),
     name: getRandomItem(names)
   }));
-};//#4
+};
 
 const createPicturesData = (itemCount = 25) => {
   const descriptions = ['Фотография – это история, которую я не могу выразить словами','Когда слова станут неясными, я сосредоточусь на фотографиях','Когда изображения станут неадекватными, я буду доволен тишиной', 'Когда у меня в руках камера – я ничего не боюсь', 'Мы делаем фотографии, чтобы понять, что значит для нас наша жизнь'];
@@ -22,6 +22,6 @@ const createPicturesData = (itemCount = 25) => {
     likes: getRandomInteger(15, 200),
     comments: createCommentsData(getRandomInteger(0, 30))
   }));
-};//#4
+};
 
 export {createPicturesData};
