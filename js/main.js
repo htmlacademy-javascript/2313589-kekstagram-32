@@ -3,7 +3,7 @@ import {renderStatus} from './status.js';
 import {renderGallery} from './gallery/main.js';
 import {setSubmitDisabled, ressetForm} from './upload/main.js';
 
-const baseUrl = 'https://32.javascript.htmlacademy.pro/kekstagram/';
+const baseUrl = 'https://32.javascript.htmlacademy.pro/kekstagram';
 
 document.addEventListener('formdata', async (evt) => {
   try {
