@@ -17,7 +17,7 @@ pristine.addValidator(form.hashtags, (text) => {
 
 pristine.addValidator(form.hashtags, (text) => {
   const words = split(text.toLowerCase());
-  return words.length === new Set(words).size; //Set откидывает повторы.
+  return words.length === new Set(words).size;
 }, 'Повторяющийся #-тэг', 1, true);
 
 pristine.addValidator(form.hashtags, (text) => {
