@@ -7,20 +7,13 @@ const request = async (url, options) => {
   return response.json();
 };
 
-const throttle = (callback, delayBetweenFrames = 500) => {
-  let timeoutId, lastCallTime;
+const debounce = (callback, timeoutDelay = 500) => {
+  let timeoutId;
 
   return (...rest) => {
-    const elapsedTime = Date.now() - lastCallTime;
-    const delay = Math.max(delayBetweenFrames - elapsedTime, 0);
-
     window.clearTimeout(timeoutId);
-
-    timeoutId = window.setTimeout(() => {
-      callback(...rest);
-      lastCallTime = Date.now();
-    }, delay);
+    timeoutId = window.setTimeout(() => callback(...rest), timeoutDelay);
   };
 };
 
-export {request, throttle};
+export {request, debounce};

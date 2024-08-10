@@ -1,5 +1,6 @@
 import '../../vendor/pristine/pristine.min.js';
 
+const config = {maxHashtagLength: 20, maxHashtags: 5, maxDescriptionLength: 140};
 const form = document.querySelector('.img-upload__form');
 
 const pristine = new Pristine(form, {
@@ -17,21 +18,21 @@ pristine.addValidator(form.hashtags, (text) => {
 
 pristine.addValidator(form.hashtags, (text) => {
   const words = split(text.toLowerCase());
-  return words.length === new Set(words).size; //Set откидывает повторы.
+  return words.length === new Set(words).size;
 }, 'Повторяющийся #-тэг', 1, true);
 
 pristine.addValidator(form.hashtags, (text) => {
-  const maxHashtags = 5;
+  const maxHashtags = config.maxHashtags;
   return split(text).length <= maxHashtags;
 }, 'Слишком много #-тэгов', 1, true);
 
 pristine.addValidator(form.hashtags, (text) => {
-  const maxHashtagLength = 20;
+  const maxHashtagLength = config.maxHashtagLength;
   return split(text).every((word) => word.length <= maxHashtagLength);
 }, 'Слишком длинный #-тэг', 1, true);
 
 pristine.addValidator(form.description, (text) => {
-  const maxDescriptionLength = 140;
+  const maxDescriptionLength = config.maxDescriptionLength;
   return text.length <= maxDescriptionLength;
 }, 'Слишком длинный комментарий', 1, true);
 
