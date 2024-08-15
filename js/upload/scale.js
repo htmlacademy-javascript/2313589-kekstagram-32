@@ -6,7 +6,7 @@ const setScale = (value) => {
   // мин и макс диапазон
   value = Math.max(value, config.min);
   value = Math.min(value, config.max);
-  display.value = `${value}%`;
+  display.setAttribute('value', `${value}%`);
   // привязка к изображению
   display.dispatchEvent(new Event('change', {bubbles: true}));
 };
