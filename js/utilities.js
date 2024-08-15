@@ -1,3 +1,5 @@
+const DELAY = 500;
+
 const request = async (url, options) => {
   const response = await fetch(url, options);
 
@@ -7,7 +9,7 @@ const request = async (url, options) => {
   return response.json();
 };
 
-const debounce = (callback, timeoutDelay = 500) => {
+const debounce = (callback, timeoutDelay = DELAY) => {
   let timeoutId;
 
   return (...rest) => {
@@ -16,4 +18,6 @@ const debounce = (callback, timeoutDelay = 500) => {
   };
 };
 
-export {request, debounce};
+const isEscapeKey = (evt) => evt === 27;
+
+export {request, debounce, isEscapeKey};

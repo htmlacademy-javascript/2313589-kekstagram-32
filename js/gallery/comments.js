@@ -1,6 +1,6 @@
 const container = document.querySelector('.social__comments');
-const template = document.querySelector('.social__comment');
-const shownCounter = document.querySelector('.social__comment-shown-count');
+const template = container.querySelector('.social__comment');
+const shownCounter = container.querySelector('.social__comment-shown-count');
 const totalCounter = document.querySelector('.social__comment-total-count');
 const loaderButton = document.querySelector('.social__comments-loader');
 
