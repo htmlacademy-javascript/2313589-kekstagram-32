@@ -5,7 +5,7 @@ const renderStatus = (type, options = {}) => {
   const status = template.content.querySelector(`.${type}`).cloneNode(true);
 
   const onDocumentKeydown = (evt) => {
-    if (isEscapeKey) {
+    if (isEscapeKey(evt)) {
       status.click();
       evt.stopPropagation();
     }

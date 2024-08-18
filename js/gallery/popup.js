@@ -4,8 +4,8 @@ import {isEscapeKey} from '../utilities.js';
 const popup = document.querySelector('.big-picture');
 const cancelButton = document.querySelector('.big-picture__cancel');
 
-const onDocumentKeydown = () => {
-  if (isEscapeKey) {
+const onDocumentKeydown = (evt) => {
+  if (isEscapeKey(evt)) {
     cancelButton.click();
   }
 };

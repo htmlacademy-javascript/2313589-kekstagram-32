@@ -18,6 +18,6 @@ const debounce = (callback, timeoutDelay = DELAY) => {
   };
 };
 
-const isEscapeKey = (evt) => evt === 27;
+const isEscapeKey = (evt) => evt.key === 'Escape';
 
 export {request, debounce, isEscapeKey};
