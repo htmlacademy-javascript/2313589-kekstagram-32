@@ -3,12 +3,12 @@ import {renderStatus} from './status.js';
 import {renderGallery} from './gallery/main.js';
 import {setSubmitDisabled, ressetForm} from './upload/main.js';
 
-const baseUrl = 'https://32.javascript.htmlacademy.pro/kekstagram/';
+const BASE_URL = 'https://32.javascript.htmlacademy.pro/kekstagram/';
 
 document.addEventListener('formdata', async (evt) => {
   try {
     setSubmitDisabled(true);
-    await request(baseUrl, {method: 'post', body: evt.formData});
+    await request(BASE_URL, {method: 'post', body: evt.formData});
     ressetForm();
     renderStatus('success');
   } catch {
@@ -19,7 +19,7 @@ document.addEventListener('formdata', async (evt) => {
 });
 
 try {
-  renderGallery(await request(`${baseUrl}data`), debounce);
+  renderGallery(await request(`${BASE_URL}data`), debounce);
 } catch {
   renderStatus('data-error', {autoHide: 5000});
 }
